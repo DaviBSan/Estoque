@@ -1,0 +1,36 @@
+﻿@model Estoque.Models.Usuario
+
+<div class="card" style="max-width:600px">
+    <div class="page-header">
+        <h1 class="page-title">Editar Usuário</h1>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.DataCadastro)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nome)
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telefone)
+            @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:1.5rem">
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

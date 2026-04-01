@@ -1,0 +1,31 @@
+﻿@model Estoque.Models.Usuario
+
+<div class="card" style="max-width:600px">
+    <div class="page-header">
+        <h1 class="page-title">Detalhes do Usuário</h1>
+    </div>
+
+    <table class="table">
+        <tr>
+            <td><strong>Nome</strong></td>
+            <td>@Model.Nome</td>
+        </tr>
+        <tr>
+            <td><strong>E-mail</strong></td>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <td><strong>Telefone</strong></td>
+            <td>@Model.Telefone</td>
+        </tr>
+        <tr>
+            <td><strong>Data de Cadastro</strong></td>
+            <td>@Model.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
+        </tr>
+    </table>
+
+    <div style="display:flex; gap:10px; margin-top:1.5rem">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

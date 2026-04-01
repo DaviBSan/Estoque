@@ -1,0 +1,20 @@
+﻿@model Estoque.Models.Usuario
+
+<div class="card" style="max-width:500px">
+    <div class="page-header">
+        <h1 class="page-title">Excluir Usuário</h1>
+    </div>
+
+    <div class="alert alert-danger">
+        Tem certeza que deseja excluir o usuário <strong>@Model.Nome</strong>?
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div style="display:flex; gap:10px; margin-top:1rem">
+            <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

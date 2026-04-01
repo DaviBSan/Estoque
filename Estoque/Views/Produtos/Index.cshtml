@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Estoque.Models.Produto>
+
+<div class="card">
+    <div class="page-header">
+        <h1 class="page-title">Produtos</h1>
+        @Html.ActionLink("+ Novo Produto", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Gênero</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><strong>@item.Nome</strong></td>
+                    <td>@item.Descricao</td>
+                    <td>R$ @item.Preco.ToString("F2")</td>
+                    <td>@item.Genero</td>
+                    <td>
+                        <div class="actions">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
