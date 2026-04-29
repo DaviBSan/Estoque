@@ -1,5 +1,4 @@
-﻿using Estoque.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Estoque.Models
 {
@@ -13,5 +12,6 @@ namespace Estoque.Models
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<ItemVenda> ItensVenda { get; set; }
         public DbSet<MovimentacaoEstoque> Movimentacoes { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

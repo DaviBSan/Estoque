@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Estoque.Models.Variante>
+
+<div class="card">
+    <div class="page-header">
+        <h1 class="page-title">Variantes</h1>
+        @Html.ActionLink("+ Nova Variante", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Tamanho</th>
+                <th>Cor</th>
+                <th>Estoque</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><strong>@item.Produto.Nome</strong></td>
+                    <td>@item.Tamanho</td>
+                    <td>@item.Cor</td>
+                    <td>
+                        @if (item.QuantidadeEmEstoque == 0)
+                        {
+                            <span class="badge badge-danger">Sem estoque</span>
+                        }
+                        else if (item.QuantidadeEmEstoque <= 5)
+                        {
+                            <span class="badge badge-warning">@item.QuantidadeEmEstoque un.</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-success">@item.QuantidadeEmEstoque un.</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="actions">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

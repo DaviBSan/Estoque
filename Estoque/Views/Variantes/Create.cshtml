@@ -1,0 +1,40 @@
+﻿@model Estoque.Models.Variante
+
+<div class="card" style="max-width:600px">
+    <div class="page-header">
+        <h1 class="page-title">Nova Variante</h1>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Produto</label>
+            @Html.DropDownList("ProdutoId", null, "Selecione o produto...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ProdutoId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Tamanho)
+            @Html.DropDownListFor(m => m.Tamanho, new SelectList(new[] { "PP", "P", "M", "G", "GG", "XGG" }), "Selecione...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Tamanho, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Cor)
+            @Html.TextBoxFor(m => m.Cor, new { @class = "form-control", placeholder = "Ex: Preto, Branco, Azul..." })
+            @Html.ValidationMessageFor(m => m.Cor, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.QuantidadeEmEstoque)
+            @Html.TextBoxFor(m => m.QuantidadeEmEstoque, new { @class = "form-control", placeholder = "0" })
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:1.5rem">
+            <button type="submit" class="btn btn-primary">Salvar Variante</button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

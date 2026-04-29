@@ -1,0 +1,20 @@
+﻿@model Estoque.Models.Variante
+
+<div class="card" style="max-width:500px">
+    <div class="page-header">
+        <h1 class="page-title">Excluir Variante</h1>
+    </div>
+
+    <div class="alert alert-danger">
+        Tem certeza que deseja excluir a variante <strong>@Model.Produto.Nome - @Model.Cor - @Model.Tamanho</strong>?
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div style="display:flex; gap:10px; margin-top:1rem">
+            <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

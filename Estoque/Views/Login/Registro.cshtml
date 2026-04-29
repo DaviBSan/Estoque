@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Criar Conta";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Criar Conta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 380px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .btn-criar {
+            width: 100%;
+            padding: 11px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+            .btn-criar:hover {
+                background-color: #45a049;
+            }
+
+        .erro {
+            color: red;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .link-login {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 13px;
+        }
+
+            .link-login a {
+                color: #4CAF50;
+                text-decoration: none;
+            }
+
+                .link-login a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h2>Criar Conta</h2>
+
+        @if (ViewBag.Erro != null)
+        {
+            <p class="erro">@ViewBag.Erro</p>
+        }
+
+        @using (Html.BeginForm("Registro", "Login", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Nome de Usuário</label>
+                <input type="text" name="NomeUsuario" placeholder="Digite um usuário" required />
+            </div>
+
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="Senha" placeholder="Digite uma senha" required />
+            </div>
+
+            <div class="form-group">
+                <label>Confirmar Senha</label>
+                <input type="password" name="ConfirmarSenha" placeholder="Repita a senha" required />
+            </div>
+
+            <button type="submit" class="btn-criar">Criar Conta</button>
+        }
+
+        <div class="link-login">
+            Já tem conta? @Html.ActionLink("Fazer Login", "Index", "Login")
+        </div>
+    </div>
+</body>
+</html>
